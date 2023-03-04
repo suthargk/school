@@ -1,22 +1,15 @@
+yarn run v1.22.19
 $ next build
 info  - Linting and checking validity of types...
-info  - Creating an optimized production build...
-info  - Compiled successfully
-info  - Collecting page data...
-info  - Generating static pages (0/3)
-info  - Generating static pages (3/3)
-info  - Finalizing page optimization...
+Failed to compile.
 
-Route (pages)                              Size     First Load JS
-┌ ○ /                                      300 B          73.3 kB
-├ ○ /404                                   181 B          73.2 kB
-└ λ /api/users                             0 B              73 kB
-+ First Load JS shared by all              73 kB
-  ├ chunks/framework-aedff47d294e0670.js   45.4 kB
-  ├ chunks/main-b8adf948f7f01545.js        26.7 kB
-  ├ chunks/pages/_app-03f04c30f397e7c8.js  196 B
-  └ chunks/webpack-4e7214a60fad8e88.js     712 B
+./pages/_app.tsx:1:30
+Type error: Cannot find module '@styles/stiches.config' or its corresponding type declarations.
 
-λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
-○  (Static)  automatically rendered as static HTML (uses no initial props)
-
+[0m[31m[1m>[22m[39m[90m 1 | [39m[36mimport[39m { globalStyles } [36mfrom[39m [32m'@styles/stiches.config'[39m[33m;[39m[0m
+[0m [90m   | [39m                             [31m[1m^[22m[39m[0m
+[0m [90m 2 | [39m[36mimport[39m type { [33mAppProps[39m } [36mfrom[39m [32m'next/app'[39m[0m
+[0m [90m 3 | [39m[0m
+[0m [90m 4 | [39m[36mexport[39m [36mdefault[39m [36mfunction[39m [33mApp[39m({ [33mComponent[39m[33m,[39m pageProps }[33m:[39m [33mAppProps[39m) {[0m
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
