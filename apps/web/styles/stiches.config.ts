@@ -1,6 +1,6 @@
 import { createStitches, globalCss } from "@stitches/react";
 import { pink, pinkDark, grayDark, gray } from "@radix-ui/colors";
-
+import type * as Stitches from "@stitches/react";
 
 export const globalStyles = globalCss({
   "*": {
@@ -20,14 +20,13 @@ export const globalStyles = globalCss({
   body: {
     background: "$pinkDark2",
     color: "$gray2",
-    margin: 0
+    margin: 0,
   },
   "*:focus": {
     outline: "4px solid $pink9",
     outlineOffset: "5px",
-  }
+  },
 });
-
 
 const SPACING = {
   px: "1px",
@@ -67,8 +66,31 @@ const SPACING = {
   96: "24rem",
 } as const;
 
-const rename = (from, to, obj) => {
+type color = "pink" | "gray";
+
+const colors = { ...pinkDark, ...grayDark };
+
+type colorObj = Partial<typeof colors>;
+
+type colorKey = keyof colorObj;
+
+type Replace<
+  S extends string,
+  From extends string,
+  To extends string
+> = From extends ""
+  ? S
+  : S extends `${infer F}${From}${infer R}`
+  ? `${F}${To}${R}`
+  : S;
+
+type endType = {
+  [T in colorKey as Replace<T, color, "darkPink" | "grayDark">]?: string;
+};
+
+const rename = (from: color, to: `${color}Dark`, obj: colorObj): endType => {
   const newObj = {};
+
   for (const key in obj) {
     const [, num] = key.split(from);
     newObj[`${to}${num}`] = obj[key];
@@ -89,7 +111,7 @@ export const { createTheme, getCssText, styled, theme } = createStitches({
       ...gray,
       ...rename("pink", "pinkDark", pinkDark),
       ...rename("gray", "grayDark", grayDark),
-    },
+    } as const,
     fontSizes: {
       sm: "0.875rem",
       base: "1rem",
