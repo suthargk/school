@@ -3,8 +3,19 @@ $ next build
 info  - Linting and checking validity of types...
 Failed to compile.
 
-./pages/_app.tsx:1:30
-Type error: Cannot find module '@styles/stiches.config' or its corresponding type declarations.
+Route (pages)                              Size     First Load JS
+┌ ○ /                                      440 B          80.8 kB
+├   /_app                                  0 B            80.4 kB
+├ ○ /404                                   181 B          80.5 kB
+└ λ /api/users                             0 B            80.4 kB
++ First Load JS shared by all              80.4 kB
+  ├ chunks/framework-aedff47d294e0670.js   45.4 kB
+  ├ chunks/main-b8adf948f7f01545.js        26.7 kB
+  ├ chunks/pages/_app-2316554cb62f9ccf.js  7.57 kB
+  └ chunks/webpack-4e7214a60fad8e88.js     712 B
+
+λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
 
 [0m[31m[1m>[22m[39m[90m 1 | [39m[36mimport[39m { globalStyles } [36mfrom[39m [32m'@styles/stiches.config'[39m[33m;[39m[0m
 [0m [90m   | [39m                             [31m[1m^[22m[39m[0m

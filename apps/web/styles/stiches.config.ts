@@ -1,6 +1,23 @@
 import { createStitches, globalCss } from "@stitches/react";
-import { pink, pinkDark, grayDark, gray } from "@radix-ui/colors";
-import type * as Stitches from "@stitches/react";
+import {
+  pink,
+  pinkDark,
+  grayDark,
+  gray,
+  indigo,
+  indigoDark,
+  purple,
+  purpleDark,
+  violet,
+  violetDark,
+  mauve,
+  mauveDark,
+  blackA,
+  cyan,
+  cyanDark,
+  slate,
+  slateDark,
+} from "@radix-ui/colors";
 
 export const globalStyles = globalCss({
   "*": {
@@ -9,7 +26,6 @@ export const globalStyles = globalCss({
     padding: 0,
     "-webkit-font-smoothing": "antialiased",
     "-moz-osx-font-smoothing": "grayscale",
-    fontFamily: "Arima Madurai",
   },
   "input, button": {
     all: "unset",
@@ -18,10 +34,13 @@ export const globalStyles = globalCss({
     cursor: "pointer",
   },
   body: {
-    background: "$pinkDark2",
-    color: "$gray2",
+    color: "white",
     margin: 0,
+    position: "relative",
+    backgroundColor: "#000",
+    // fontSize: "62.5%"
   },
+
   "*:focus": {
     outline: "4px solid $pink9",
     outlineOffset: "5px",
@@ -66,11 +85,24 @@ const SPACING = {
   96: "24rem",
 } as const;
 
-type color = "pink" | "gray";
+type color = "pink" | "gray" | "blackA" | "slate" | "cyan" | "mauve" | "violet" | "indigo" | "purple" ; 
 
-const colors = { ...pinkDark, ...grayDark };
+const themeColors = {
+  ...pinkDark,
+  ...grayDark,
+  ...pink,
+  ...gray,
+  ...purple,
+  ...indigo,
+  ...violet,
+  ...mauve,
+  ...mauveDark,
+  ...blackA,
+  ...cyan,
+  ...slate,
+};
 
-type colorObj = Partial<typeof colors>;
+type colorObj = Partial<typeof themeColors>;
 
 type colorKey = keyof colorObj;
 
@@ -85,7 +117,7 @@ type Replace<
   : S;
 
 type endType = {
-  [T in colorKey as Replace<T, color, "darkPink" | "grayDark">]?: string;
+  [T in colorKey as Replace<T, color, "darkPink" | "grayDark" | "mauveDark">]?: string;
 };
 
 const rename = (from: color, to: `${color}Dark`, obj: colorObj): endType => {
@@ -107,11 +139,16 @@ export const { createTheme, getCssText, styled, theme } = createStitches({
   },
   theme: {
     colors: {
-      ...pink,
-      ...gray,
+      ...themeColors,
+      ...rename("slate", "slateDark", slateDark),
+      ...rename("cyan", "cyanDark", cyanDark),
+      ...rename("mauve", "mauveDark", mauveDark),
+      ...rename("violet", "violetDark", violetDark),
+      ...rename("purple", "purpleDark", purpleDark),
+      ...rename("indigo", "indigoDark", indigoDark),
       ...rename("pink", "pinkDark", pinkDark),
       ...rename("gray", "grayDark", grayDark),
-    } as const,
+    },
     fontSizes: {
       sm: "0.875rem",
       base: "1rem",
