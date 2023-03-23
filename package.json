@@ -27,5 +27,6 @@
   "dependencies": {
     "@radix-ui/react-icons": "^1.2.0",
     "yarn": "^1.22.19"
-  }
+  },
+  "version": "0.0.1"
 }
