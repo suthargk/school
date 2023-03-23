@@ -1,4 +1,5 @@
-import Header from "@components/Header";
+import Header from "@components/Home/Header";
+import News from "@components/Home/News";
 import Navigation from "@components/Navigation";
 
 export default function IndexPage() {
@@ -6,6 +7,7 @@ export default function IndexPage() {
     <div>
       <Navigation />
       <Header />
+      <News />
     </div>
   );
 }

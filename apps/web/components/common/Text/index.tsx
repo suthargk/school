@@ -18,21 +18,43 @@ const TextStyle = styled("span", {
       },
     },
 
+    weight: {
+      light: {
+        fontWeight: 300,
+      },
+      medium: {
+        fontWeight: 400,
+      },
+      semiBold: {
+        fontWeight: 500,
+      },
+
+      bold: {
+        fontWeight: 600,
+      },
+      extraBold: {
+        fontWeight: 700,
+      },
+    },
+
     size: {
-      xs: {
+      xxs: {
         fontSize: "12px",
       },
-      sm: {
+      xs: {
         fontSize: "14px",
+      },
+      sm: {
+        fontSize: "16px",
       },
       md: {
         fontSize: "18px",
       },
       lg: {
-        fontSize: "24px",
+        fontSize: "22px",
       },
       xl: {
-        fontSize: "30px",
+        fontSize: "26px",
       },
     },
   },

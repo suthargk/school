@@ -308,6 +308,7 @@ const Navigation = () => {
 
                       return (
                         <ListItem
+                          key={subCategory.name}
                           href={subCategory.path}
                           subCategory={subCategory}
                         ></ListItem>
@@ -318,7 +319,7 @@ const Navigation = () => {
               </NavigationMenuContent>
             </NavigationMenu.Item>
           ) : (
-            <NavigationMenu.Item>
+            <NavigationMenu.Item key={category.name}>
               <NavigationMenuLink href={category.path}>
                 {category.name}
               </NavigationMenuLink>

@@ -27,6 +27,10 @@ export const globalStyles = globalCss({
     "-webkit-font-smoothing": "antialiased",
     "-moz-osx-font-smoothing": "grayscale",
   },
+  "*::selection": {
+    background: "#f04f88",
+    color: "#fff",
+  },
   "input, button": {
     all: "unset",
   },
@@ -85,7 +89,16 @@ const SPACING = {
   96: "24rem",
 } as const;
 
-type color = "pink" | "gray" | "blackA" | "slate" | "cyan" | "mauve" | "violet" | "indigo" | "purple" ; 
+type color =
+  | "pink"
+  | "gray"
+  | "blackA"
+  | "slate"
+  | "cyan"
+  | "mauve"
+  | "violet"
+  | "indigo"
+  | "purple";
 
 const themeColors = {
   ...pinkDark,
@@ -117,7 +130,11 @@ type Replace<
   : S;
 
 type endType = {
-  [T in colorKey as Replace<T, color, "darkPink" | "grayDark" | "mauveDark">]?: string;
+  [T in colorKey as Replace<
+    T,
+    color,
+    "darkPink" | "grayDark" | "mauveDark"
+  >]?: string;
 };
 
 const rename = (from: color, to: `${color}Dark`, obj: colorObj): endType => {

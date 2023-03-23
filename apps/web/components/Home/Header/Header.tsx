@@ -4,7 +4,7 @@ import { styled } from "@stitches/react";
 import React from "react";
 
 const HeaderContainer = styled("div", {
-  height: "90vh",
+  height: "68vh",
   width: "100%",
   display: "flex",
   justifyContent: "center",
@@ -14,6 +14,10 @@ const HeaderContainer = styled("div", {
 const HeaderMain = styled("div", {
   width: "80%",
   textAlign: "center",
+
+  "h1::selection": {
+    backgroundColor: "transparent",
+  },
 });
 
 const Header = () => {
