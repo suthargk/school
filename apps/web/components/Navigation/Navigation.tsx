@@ -57,11 +57,12 @@ const NavigationMenuRoot = styled(NavigationMenu.Root, {
   display: "flex",
   justifyContent: "center",
   width: "100vw",
-  zIndex: 1,
+  zIndex: 998,
 });
 
 const NavigationMenuList = styled(NavigationMenu.List, {
   display: "flex",
+  gap: "5px",
   justifyContent: "center",
   padding: "4px",
   borderRadius: "6px",
@@ -106,6 +107,8 @@ const NavigationMenuTrigger = styled(NavigationMenu.Trigger, {
   justifyContent: "space-between",
   gap: "2px",
 
+  "&:focus": { boxShadow: `0 0 0 4px #d6409f` },
+
   "&[data-state='open'] > .CaretDown": {
     transform: "rotate(-180deg)",
   },
@@ -131,6 +134,8 @@ const NavigationMenuLink = styled(NavigationMenu.Link, {
   textDecoration: "none",
   fontSize: "15px",
   lineHeight: 1,
+
+  "&:focus": { boxShadow: `0 0 0 4px #d6409f` },
 });
 
 const NavigationMenuIndicator = styled(NavigationMenu.Indicator, {
@@ -205,7 +210,7 @@ const ListItemLink = styled("a", {
   fontSize: "15px",
   lineHeight: 1,
 
-  "&:focus": { boxShadow: "0 0 0 2px white" },
+  "&:focus": { boxShadow: `0 0 0 4px #d6409f` },
   "&:hover": { backgroundColor: "$grayDark2" },
 });
 
@@ -236,7 +241,7 @@ const Callout = styled("a", {
   userSelect: "none",
 
   "&:hover": {
-    backgroundColor: "hsla(0,0%,100%,.09)",
+    // backgroundColor: "hsla(0,0%,100%,.09)",
   },
 
   focus: { boxShadow: "0 0 0 2px $violet7" },
@@ -308,6 +313,7 @@ const Navigation = () => {
 
                       return (
                         <ListItem
+                          key={subCategory.name}
                           href={subCategory.path}
                           subCategory={subCategory}
                         ></ListItem>
@@ -318,7 +324,7 @@ const Navigation = () => {
               </NavigationMenuContent>
             </NavigationMenu.Item>
           ) : (
-            <NavigationMenu.Item>
+            <NavigationMenu.Item key={category.name}>
               <NavigationMenuLink href={category.path}>
                 {category.name}
               </NavigationMenuLink>
