@@ -17,7 +17,6 @@ const Section = styled("section", {
   padding: "30px",
 });
 const SectionContainer = styled("div", {
-  height: "600px",
   width: "80%",
   margin: "0 auto",
 });
